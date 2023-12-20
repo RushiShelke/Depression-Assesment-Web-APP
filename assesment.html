@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Assessment</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex items-center justify-center">
+        
+        <div class="max-w-md p-6 bg-white rounded-md shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Depression Assessment</h2>
+
+            
+            <div id="questionContainer">
+                <p id="question" class="text-lg mb-4">Question 1: How often have you felt down, depressed, or hopeless in the last two weeks?</p>
+                
+                
+                <div class="mb-4">
+                    <input type="radio" id="option1" name="answer" value="0">
+                    <label for="option1" class="ml-2">Not at all</label>
+                </div>
+                <div class="mb-4">
+                    <input type="radio" id="option2" name="answer" value="1">
+                    <label for="option2" class="ml-2">Several days</label>
+                </div>
+                <div class="mb-4">
+                    <input type="radio" id="option3" name="answer" value="2">
+                    <label for="option3" class="ml-2">More than half the days</label>
+                </div>
+                <div class="mb-4">
+                    <input type="radio" id="option4" name="answer" value="3">
+                    <label for="option4" class="ml-2">Nearly every day</label>
+                </div>
+            </div>
+
+            
+            <div class="flex justify-between">
+                <button id="prevBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    onclick="prevQuestion()">Previous</button>
+                <button id="nextBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    onclick="nextQuestion()">Next</button>
+                <button id="submitBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    onclick="submitAssessment()" style="display:none;">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const questionContainer = document.getElementById('questionContainer');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            let currentQuestion = 1;
+            const totalQuestions = 5; 
+
+            
+            function showQuestion() {
+                const question = document.getElementById('question');
+                question.textContent = `Question ${currentQuestion}: How often have you felt down, depressed, or hopeless in the last two weeks?`;
+
+                
+            }
+
+            
+            window.prevQuestion = function () {
+                if (currentQuestion > 1) {
+                    currentQuestion--;
+                    showQuestion();
+                }
+
+                
+                toggleButtonsVisibility();
+            };
+
+            
+            window.nextQuestion = function () {
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    showQuestion();
+                }
+
+                
+                toggleButtonsVisibility();
+            };
+
+            
+            window.submitAssessment = function () {
+                
+                alert('Assessment submitted!');
+                
+            };
+
+        
+            function toggleButtonsVisibility() {
+                prevBtn.style.display = currentQuestion === 1 ? 'none' : 'block';
+                nextBtn.style.display = currentQuestion === totalQuestions ? 'none' : 'block';
+                submitBtn.style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+            }
+
+            
+            showQuestion();
+            toggleButtonsVisibility();
+        });
+    </script>
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const questionContainer = document.getElementById('questionContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+
+        let currentQuestion = 1;
+        const totalQuestions = 5; 
+
+        
+        function showQuestion() {
+            const question = document.getElementById('question');
+            question.textContent = `Question ${currentQuestion}: How often have you felt down, depressed, or hopeless in the last two weeks?`;
+
+        
+            clearPreviousSelection();
+        }
+
+        
+        function clearPreviousSelection() {
+            const options = document.querySelectorAll('input[name="answer"]');
+            options.forEach(option => {
+                option.checked = false;
+            });
+        }
+
+       
+        window.prevQuestion = function () {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion();
+            }
+
+            
+            toggleButtonsVisibility();
+        };
+
+        
+        window.nextQuestion = function () {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion();
+            }
+            toggleButtonsVisibility();
+        };
+
+    
+        window.submitAssessment = function () {
+          
+            alert('Assessment submitted!');
+            window.location.href='file:///Users/rushishelke/Desktop/Depression/result.html';
+        };
+
+       
+        function toggleButtonsVisibility() {
+            prevBtn.style.display = currentQuestion === 1 ? 'none' : 'block';
+            nextBtn.style.display = currentQuestion === totalQuestions ? 'none' : 'block';
+            submitBtn.style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+        showQuestion();
+        toggleButtonsVisibility();
+    });
+</script>
+</body>
+
+</html>

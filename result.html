@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Assessment Result</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex items-center justify-center">
+        
+        <div class="max-w-md p-6 bg-white rounded-md shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Assessment Result</h2>
+
+            
+            <p id="resultMessage" class="text-lg mb-4">Your result: <span id="result">Beginner</span></p>
+
+            
+
+            
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                onclick="goToAssessment()">Go Back to Assessment</button>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const result = urlParams.get('result');
+            const resultElement = document.getElementById('result');
+            if (result) {
+                resultElement.textContent = result;
+            }
+        });
+
+        
+        function goToAssessment() {
+
+            window.location.href ='file:///Users/rushishelke/Desktop/Depression/index.html';
+        }
+    </script>
+</body>
+
+</html>
